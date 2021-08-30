@@ -1,5 +1,5 @@
+import enum
 import re
-
 
 move_offsets = ("", "2", "'")
 move_dirs = "uUlLfFrRbBdDMES"
@@ -23,7 +23,7 @@ def is_valid_move(move):
         if len(move) < 3 or move[2] != 'w':
             return False
         move = move[1:]
-    
+
     # Check that the directional indicator is valid
     if len(move) == 0 or move[0] not in move_dirs:
         return False
@@ -43,8 +43,8 @@ def is_valid_move(move):
     # Remaining part should be a move offset
     return move in move_offsets
 
-def is_commutator(move_str):
-    return ',' in move_str
+def is_commutator(comm):
+    return ',' in comm or '/' in comm or '*' in comm
 
 def get_move_split_idx(move):
     idx = 0
@@ -53,6 +53,8 @@ def get_move_split_idx(move):
     return idx
 
 def inverse_move(move):
+    if len(move) > 2:
+        move = move[:2]
     idx = get_move_split_idx(move)
     base = move[:idx]
     offset = move[idx:]
@@ -82,30 +84,42 @@ def inverse_moves(move_str):
     return ' '.join(reversed([inverse_move(move) for move in move_str]))
 
 def comm_to_moves(comm):
-    comm = comm.replace('[', '').replace(']', '').strip()
-    comm_list = [x.strip() for x in re.split(':|,', comm)]
-    print(comm_list)
+    if not is_commutator(comm):
+        return comm
+
+    comm = comm.replace('[', '').replace(']', '')
+    comm = comm.replace('(', '').replace(')', '')
+    comm = comm.replace('{', '').replace('}', '').strip()
+    if '*' in comm:
+        comm = comm[:comm.index('*')]
+    comm_list = [x.strip() for x in re.split(':|,|/', comm)]
     if len(comm_list) == 0:
         return ""
 
-    move_str = comm_list[-2] + ' ' + comm_list[-1] + ' ' + inverse_moves(comm_list[-2]) + ' ' + inverse_moves(comm_list[-1])
+    move_str = ""
+    if ',' in comm:
+        move_str = comm_list[-2] + ' ' + comm_list[-1] + ' ' + inverse_moves(comm_list[-2]) + ' ' + inverse_moves(comm_list[-1])
+    elif '/' in comm:
+        move_str = comm_list[-2] + ' ' + comm_list[-1] + ' ' + comm_list[-2][0] + '2 ' + inverse_moves(comm_list[-1]) + ' ' + comm_list[-2]
+    else: 
+        move_str = comm_list[-1] + ' ' + comm_list[-1]
     if len(comm_list) == 3:
         move_str = comm_list[0] + ' ' + move_str + ' ' + inverse_moves(comm_list[0])
-    
+
+    # change 2' to 2 
+    move_str = move_str.replace("2'", "2")
     move_list = move_str.split()
-    print(move_list)
     out_list = [move_list[0]]
-    
+
+
     for i in range(1, len(move_list)):
         pop_prev, add_next = cancel_moves(move_list[i-1], move_list[i])
-        if i > 1:
-            pop_prev, add_next = cancel_moves(move_list[i-2], move_list[i])
         if pop_prev:
-            out_list.pop()
-        print(add_next)
+            if len(out_list) > 0:
+                out_list.pop()
         if add_next is not None:
             out_list.append(add_next)
-    
+
     return ' '.join(out_list)
 
 

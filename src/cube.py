@@ -118,7 +118,8 @@ class Cube:
                     self.faces['R'][i][-1], self.faces['D'][-1][-1-i], self.faces['L'][-1-i][0], self.faces['U'][0][i]
 
         elif move in "ulfbrd":
-            if self.size not in (4,5):
+            if self.size == 3:
+                self.compound_move(move.upper()+'w')
                 return
             if move == 'u':
                 self.faces['L'][1], self.faces['F'][1], self.faces['R'][1], self.faces['B'][1] = \

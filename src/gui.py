@@ -16,7 +16,10 @@ pygame.init()
 
 # Enter the display font (recommended to not change)
 #font = pygame.font.SysFont('arialbold', 16)
-font = pygame.font.Font('freesansbold.ttf', 40)
+font = pygame.font.Font('freesansbold.ttf', 16)
+fontbig = pygame.font.Font('freesansbold.ttf', 40)
+fontmed = pygame.font.Font('freesansbold.ttf', 28)
+fontsmall = pygame.font.Font('freesansbold.ttf', 16)
 
 class Gui:
     """
@@ -25,7 +28,7 @@ class Gui:
     def __init__(self, cube: Cube):
         self.cube = cube
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        self.virtualcube = pygame.Surface((500,500))
+        self.virtualcube = pygame.Surface((500,400))
         self.screen.fill(bg_colour)
         self.virtualcube.fill(bg_colour)
         self.curr_alg = ""
@@ -52,6 +55,9 @@ class Gui:
         while running:
             #self.update_button_text(buttons)
             #self.draw_buttons(buttons)
+            #self.display_alg()
+            # Display the cube after every event in case cube state was changed
+            self.draw_cube()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -62,14 +68,14 @@ class Gui:
                         self.cube.do_move(keybind_dict[key])
                     if event.key == pygame.K_RETURN:
                         self.display_targets()
-                        print(self.curr_alg)
-                        print(comm_to_moves(self.curr_alg))
-                        for i in range(2):
+                        self.cube.reset()
+                        for _ in range(2):
                             self.cube.do_scramble(comm_to_moves(self.curr_alg))
                     if event.key == pygame.K_ESCAPE:
-                        self.cube.reset()
-                    if event.key == pygame.K_SPACE:
+                        #self.display_targets()
                         pass
+                    if event.key == pygame.K_SPACE:
+                        self.display_alg()
                 """
                 # Process button presses
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -87,8 +93,6 @@ class Gui:
                     if buttons[5].is_hover():
                         self.draw_memo()
                 """
-                # Display the cube after every event in case cube state was changed
-                self.draw_cube()
 
             pygame.display.update()
 
@@ -116,14 +120,23 @@ class Gui:
             button.draw(self.screen)
 
     def display_targets(self):
-        pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0)   
+        pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0)  
+        pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
         target = gen_letter_pair(random.choice(train_pcs))
         self.curr_alg = get_3cycle(target['buffer'], target['targets'][0], target['targets'][1])
         ltr1 = letter_scheme[target['targets'][0]]
         ltr2 = letter_scheme[target['targets'][1]]
         out_txt = f"[{target['buffer']}]  {ltr1}{ltr2}"
-        text = font.render(out_txt, True, (0,0,0))
+        text = fontbig.render(out_txt, True, (0,0,0))
         text_rect = text.get_rect(center=(WIDTH/2, 80))
+        self.screen.blit(text, text_rect)
+
+    def display_alg(self):
+        pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
+        print(self.curr_alg)
+        out_txt = self.curr_alg
+        text = fontsmall.render(out_txt, True, (0,0,0))
+        text_rect = text.get_rect(center=(WIDTH/2, 580))
         self.screen.blit(text, text_rect)
 
     def reset_cube(self):
