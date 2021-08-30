@@ -18,7 +18,7 @@ pygame.init()
 #font = pygame.font.SysFont('arialbold', 16)
 font = pygame.font.Font('freesansbold.ttf', 16)
 fontbig = pygame.font.Font('freesansbold.ttf', 40)
-fontmed = pygame.font.Font('freesansbold.ttf', 28)
+fontmed = pygame.font.Font('freesansbold.ttf', 24)
 fontsmall = pygame.font.Font('freesansbold.ttf', 16)
 
 class Gui:
@@ -68,12 +68,9 @@ class Gui:
                         self.cube.do_move(keybind_dict[key])
                     if event.key == pygame.K_RETURN:
                         self.display_targets()
-                        self.cube.reset()
-                        for _ in range(2):
-                            self.cube.do_scramble(comm_to_moves(self.curr_alg))
+                        self.reset_cube()
                     if event.key == pygame.K_ESCAPE:
-                        #self.display_targets()
-                        pass
+                        self.reset_cube()
                     if event.key == pygame.K_SPACE:
                         self.display_alg()
                 """
@@ -135,12 +132,14 @@ class Gui:
         pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
         print(self.curr_alg)
         out_txt = self.curr_alg
-        text = fontsmall.render(out_txt, True, (0,0,0))
+        text = fontmed.render(out_txt, True, (0,0,0))
         text_rect = text.get_rect(center=(WIDTH/2, 580))
         self.screen.blit(text, text_rect)
 
     def reset_cube(self):
         self.cube.reset()
+        for _ in range(2):
+            self.cube.do_scramble(comm_to_moves(self.curr_alg))
 
 
 class Button:
