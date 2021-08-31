@@ -1,4 +1,3 @@
-import enum
 import re
 
 move_offsets = ("", "2", "'")
@@ -44,7 +43,7 @@ def is_valid_move(move):
     return move in move_offsets
 
 def is_commutator(comm):
-    return ',' in comm or '/' in comm or '*' in comm
+    return ',' in comm or '/' in comm or '*' in comm or ':' in comm
 
 def get_move_split_idx(move):
     idx = 0
@@ -90,8 +89,11 @@ def comm_to_moves(comm):
     comm = comm.replace('[', '').replace(']', '')
     comm = comm.replace('(', '').replace(')', '')
     comm = comm.replace('{', '').replace('}', '').strip()
+    has_mul = False
     if '*' in comm:
         comm = comm[:comm.index('*')]
+        has_mul = True
+    has_setup = ':' in comm
     comm_list = [x.strip() for x in re.split(':|,|/', comm)]
     if len(comm_list) == 0:
         return ""
@@ -101,9 +103,11 @@ def comm_to_moves(comm):
         move_str = comm_list[-2] + ' ' + comm_list[-1] + ' ' + inverse_moves(comm_list[-2]) + ' ' + inverse_moves(comm_list[-1])
     elif '/' in comm:
         move_str = comm_list[-2] + ' ' + comm_list[-1] + ' ' + comm_list[-2][0] + '2 ' + inverse_moves(comm_list[-1]) + ' ' + comm_list[-2]
-    else: 
+    elif has_mul: 
         move_str = comm_list[-1] + ' ' + comm_list[-1]
-    if len(comm_list) == 3:
+    else: 
+        move_str = comm_list[-1]
+    if has_setup:
         move_str = comm_list[0] + ' ' + move_str + ' ' + inverse_moves(comm_list[0])
 
     # change 2' to 2 

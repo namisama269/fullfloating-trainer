@@ -1,0 +1,5 @@
+LB,RB,BL,BR
+,u: {R/S'},,R S': {R/E'}
+u: {R'/S'},,"L2 U' L': U, L' E L",
+,"L2 U' L': L' E L, U",,L U' L' U: {L/E}
+R S': {R'/E'},,L U' L' U: {L'/E},

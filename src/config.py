@@ -36,14 +36,14 @@ buffers = {
     'e': [
         #'UF', 
         'UB', 
-        #'UR', 
-        #'UL', 
-        #'DF', 
-        #'DB', 
-        #'FR', 
-        #'FL', 
-        #'DR', 
-        #'DL'
+        'UR', 
+        'UL', 
+        'DF', 
+        'DB', 
+        'FR', 
+        'FL', 
+        'DR', 
+        'DL',
         ],
 }
 
@@ -119,6 +119,16 @@ face_colours = {
     'R': (232, 18 ,10),
     'O': (251, 140, 0),
 }
+
+# BLD mode colours
+buffer_clr = (0,0,0)
+target_clr1 = (255,0,0)
+target_clr2 = (0,0,255)
+fill_clr = (255,255,255)
+
+# Button colours
+button_clr = (255,187,187)#(190,190,190)
+hover_clr = (255,221,221)#(211,211,211)
 
 """
 Keybind Settings

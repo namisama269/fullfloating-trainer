@@ -32,6 +32,13 @@ class Gui:
         self.screen.fill(bg_colour)
         self.virtualcube.fill(bg_colour)
         self.curr_alg = ""
+        self.curr_cycle = {
+            'buffer': None,
+            'targets': [None, None],
+        }
+        self.bld_mode = False
+        self.show_cube = True
+        self.show_targets = True
     
     def run(self):
         keybind_dict = keybind_333 
@@ -55,7 +62,6 @@ class Gui:
         while running:
             #self.update_button_text(buttons)
             #self.draw_buttons(buttons)
-            #self.display_alg()
             # Display the cube after every event in case cube state was changed
             self.draw_cube()
 
@@ -101,12 +107,24 @@ class Gui:
     
     def draw_cube(self):
         self.virtualcube.fill(bg_colour)
+        if not self.show_cube:
+            return
         # Coordinates of all facelet points
         for i, face in enumerate(facelets[self.cube.size]):
             for j, points in enumerate(face):
                 x = j // self.cube.size
                 y = j % self.cube.size
-                stk_colour = face_colours[self.cube.faces["DLRBFU"[i]][x][y][1]]
+                if self.bld_mode:
+                    if self.cube.faces["DLRBFU"[i]][x][y][0] == self.curr_cycle['buffer']:
+                        stk_colour = target_clr2
+                    elif self.cube.faces["DLRBFU"[i]][x][y][0] == self.curr_cycle['targets'][0]:
+                        stk_colour = buffer_clr
+                    elif self.cube.faces["DLRBFU"[i]][x][y][0] == self.curr_cycle['targets'][1]:
+                        stk_colour = target_clr1
+                    else:
+                        stk_colour = fill_clr
+                else:
+                    stk_colour = face_colours[self.cube.faces["DLRBFU"[i]][x][y][1]]
                 pygame.gfxdraw.filled_polygon(self.virtualcube, points, stk_colour)
                 pygame.gfxdraw.aapolygon(self.virtualcube, points, (0,0,0))
         
@@ -120,17 +138,20 @@ class Gui:
         pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0)  
         pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
         target = gen_letter_pair(random.choice(train_pcs))
+        self.curr_cycle = target
         self.curr_alg = get_3cycle(target['buffer'], target['targets'][0], target['targets'][1])
         ltr1 = letter_scheme[target['targets'][0]]
         ltr2 = letter_scheme[target['targets'][1]]
         out_txt = f"[{target['buffer']}]  {ltr1}{ltr2}"
+        print(out_txt)
+        if not self.show_targets:
+            return
         text = fontbig.render(out_txt, True, (0,0,0))
         text_rect = text.get_rect(center=(WIDTH/2, 80))
         self.screen.blit(text, text_rect)
 
     def display_alg(self):
         pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
-        print(self.curr_alg)
         out_txt = self.curr_alg
         text = fontmed.render(out_txt, True, (0,0,0))
         text_rect = text.get_rect(center=(WIDTH/2, 580))
@@ -143,17 +164,17 @@ class Gui:
 
 
 class Button:
-    def __init__(self, x, y, width, height, default_clr, hover_clr, text):
+    def __init__(self, x, y, width, height, button_clr, hover_clr, text):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
-        self.default_clr = default_clr
+        self.button_clr = button_clr
         self.hover_clr = hover_clr
         self.text = text
 
     def draw(self, screen):
-        display_clr = self.hover_clr if self.is_hover() else self.default_clr
+        display_clr = self.hover_clr if self.is_hover() else self.button_clr
         pygame.draw.rect(screen, display_clr, (self.x,self.y,self.width,self.height), 0)
 
         if self.text != "":

@@ -1,0 +1,9 @@
+LB,LD,RB,RD,BL,BR,DL,DR
+,"L': U L U', S'","B2, L' S' L",R' F R U': {R'/E'},,"E L: L F2 L', S","L2 u: L U' L', E",R B' R' U: {R'/E}
+"L': S', U L U'",,R S': {R/E},S': {R/E},S': {L'/S},"L' u L: L E' L', U'",,"R F2 R', S'"
+"L' S' L, B2",R S': {R'/E},,"R2 U': R U R', E",L' E': {L'/E'},,"L' u' L: L E' L', U",L S: {L/E}
+R' F R U': {R/E'},S: {R'/E},"R2 u': R U R', E'",,S': {L'/S'},"R' u R: U', R E' R'","U' L U, S",
+,S': {L/S},L' E': {L/E'},S': {L'/S'},,"L2, E",u2: {R/S'},{L/S}
+"E L: S, L F2 L'","L' u L: U', L E' L'",,"R' u R: R E' R', U'","E, L2",,L' U' L U: {L/E},R' U R U': {R'/E}
+"L2 U: L U' L', E'",,"L' u' L: U, L E' L'","S, U' L U",u2: {R'/S'},L' U' L U: {L'/E},,R' F2: {R/S'}
+R B' R' U: {R/E},"S', R F2 R'",L S: {L'/E},,{L'/S},R' U R U': {R/E},R' F2: {R'/S'},

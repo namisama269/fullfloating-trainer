@@ -1,0 +1,7 @@
+LB,LD,RB,BL,BR,DL
+,"S, U L' U'",u': {L/S},,"R2 U R: U', R E' R'",S': {R'/E'}
+"U L' U', S",,"L B2 L', S","S', R' B2 R","S', U' R U",
+u': {L'/S},"S, L B2 L'",,L' S: {L'/E},,S: {L'/E}
+,"R' B2 R, S'",L' S: {L/E},,R' U R U': {R/E'},l U2: {R'/E'}
+"R2 U R: R E' R', U'","U' R U, S'",,R' U R U': {R'/E'},,r' U2: {L'/E}
+S': {R/E'},,S: {L/E},l U2: {R/E'},r' U2: {L/E},

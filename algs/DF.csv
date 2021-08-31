@@ -1,0 +1,15 @@
+LB,LF,LD,FL,FR,RF,RB,RD,BL,BR,BD,DB,DL,DR
+,r U': {L/S'},"L2: U' M' U, L'","L': S', L' F L",F' L' U: {L'/E'},"R2 F': E', R2","F: L2', E","R' F': E', R2",,"E', R D R'","M': U L U', M'",L: M' U' M U2 M U M' U2,"S: U' M' U, L","D, R' E' R"
+r U': {L'/S'},,"L2: U' M' U, L",,"E', l' U l","l': R' S2 R, U",r U': {R/E},M' U': {R/E},"E, l' U l","l': l' E l, U","M': U L' U', M'",L': M' U' M U2 M U M' U2,"S: U' M' U, L'","L S L', F"
+"L: U' M' U, L","L': U' M' U, L'",,"L F S' L: S, L2'",L F' L' U: {L'/E'},M' U: {L/E'},"L F: L2', E",L F: {L/S},L f: {L'/S'},M' u: {L/E'},"D: R F' R', S'",D L F: {L/S},,"S', L' F L"
+"L: L F L', S",,r U E: {L'/E'},,R D: {R/E},"r U' r', E",F R U': {R/E},R' F R U': {R'/E},D: {L'/S},R' D: {R'/E},"M2: U' L' U, M'",L': u M' u2 M' u,"L2: U M2 U', L",M2 U: {R/E}
+F' L' U: {L/E'},"l' U l, E'",L F' L' U: {L/E'},R D: {R/E},,,"R': S', R' F' R",l' U' E': {R/E},"F' R: U', R E' R'",D': {R'/S'},"M2: U R U', M'",R: u' M' u2 M' u',M2 U': {L'/E'},"R2: U' M2 U, R'"
+"R2 F': R2, E'","l': U, R' S2 R",M' U: {L'/E'},"E, r U' r'",,,l' U: {R/S},"R2: U M' U', R'","r: r E' r', U'","E', r U' r'","M': U' R U, M'",R: M' U M U2 M U' M' U2,"D', L' E' L","S': U M' U', R"
+"F': R2, E'",r U': {R'/E},L F: {E/L2},F R U': {R/E},"R': S', R' F' R",l' U: {R'/S},,"R2: U M' U', R","L' D' L, E",,"M': U' R' U, M'",R': M' U M U2 M U' M' U2,"D', L E L'","S': U M' U', R'"
+"R' F': R2, E'",M' U': {R'/E},R' F': {R'/S'},"R' F R U' R: E, R2",l' U' E': {R'/E},"R: U M' U', R","R': U M' U', R'",,M' u': {R/E},R' f': {R/S},"D': L' F L, S",D' L F: {L'/S},"S', R F' R'",
+,"l' U l, E",L f: {L/S},"D L': S, L2","F' R: R E' R', U'","r: U', r E' r'","E, L' D' L",M' u': {R/E},,M' u: {R'/S},"M2: U' L U, M'",L: u M' u2 M' u,"L2: U M2 U', L'",M2 U: {R'/E'}
+"E', R D R'","l': U, l' E l",M' u: {L'/E'},"R' D R: E, R2",D': {R/S'},"r U' r', E'",,R' f': {R'/S},M' u: {R/S},,"M2: U R' U', M'",R': u' M' u2 M' u',M2 U': {L/E'},"R2: U' M2 U, R"
+"M2: U L U', M","M2: U L' U', M","D: R F' R', S'","M: U' L' U, M","M: U R U', M","M2: U' R U, M","M2: U' R' U, M","D': S, L' F L","M: U' L U, M","M: U R' U', M",,,"D: L' F L, S'","D': R F' R', S'"
+L: M U M' U2 M' U' M U2,L': M U M' U2 M' U' M U2,D R' F': {R'/S'},"L' D': L2, S","R D: R2, S'",R: M U' M' U2 M' U M U2,R': M U' M' U2 M' U M U2,D' L F: {L/S},"L D': L2, S","R' D: R2, S'",,,S: M U M' U2 M' U' M U2,S': M U' M' U2 M' U M
+"S: L, U' M' U","S: L', U' M' U",,"L': U M2 U', L'",M2 U': {L/E'},"L' E' L, D'","L E L', D'","R F' R', S'","L: U M2 U', L",M2 U': {L'/E},"D: S, L' F L",S: M' U' M U2 M U M' U2,,FS': {R/E}
+"R’ E’ R, D","F, L S L'","L' F L, S","M2 U R': E, R2","R: U' M2 U, R","S': R, U M' U'","S': U M' U', R'",,M2 U: {R/E'},"R': U' M2 U, R'","D': S', R F' R'",S': M' U M U2 M U' M' U2,FS': {R'/E},
