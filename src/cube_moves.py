@@ -58,6 +58,7 @@ def inverse_move(move):
     base = move[:idx]
     offset = move[idx:]
     return base + move_offsets[2-move_offsets.index(offset)]
+    
 
 def cancel_moves(move1, move2):
     idx1 = get_move_split_idx(move1)
@@ -129,4 +130,5 @@ def comm_to_moves(comm):
 
 if __name__ == "__main__":
     comm = input()
-    print(comm_to_moves(comm))
+    #print(comm_to_moves(comm))
+    print(inverse_moves(comm))

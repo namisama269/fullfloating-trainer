@@ -48,6 +48,7 @@ buffers = {
 }
 
 # Enter letter scheme for each piece type.
+
 letter_scheme = {
     # corners
     'UBL': 'A',
@@ -101,6 +102,64 @@ letter_scheme = {
     'DR': 'W',
     'DF': 'X',
 }
+
+
+#日本語ナンバーリング
+"""
+letter_scheme = {
+    # corners
+    'UBL': 'あ',
+    'UBR': 'い',
+    'UFL': 'え',
+    'UFR': 'う',
+    'LUB': 'さ',
+    'LUF': 'し',
+    'LDB': 'せ',
+    'LDF': 'す',
+    'FUL': 'か',
+    'FUR': 'き',
+    'FDL': 'け',
+    'FDR': 'く',
+    'RUF': 'な',
+    'RUB': 'に',
+    'RDF': 'ね',
+    'RDB': 'ぬ',
+    'BUL': 'て',
+    'BUR': 'つ',
+    'BDL': 'た',
+    'BDR': 'ち',
+    'DBL': 'へ',
+    'DBR': 'ふ',
+    'DFL': 'は',
+    'DFR': 'ひ',
+
+    # edges
+    'UB': 'あ',
+    'UL': 'え',
+    'UR': 'い',
+    'UF': 'う',
+    'LU': 'さ',
+    'LB': 'せ',
+    'LF': 'し',
+    'LD': 'す',
+    'FU': 'か',
+    'FL': 'け',
+    'FR': 'き',
+    'FD': 'く',
+    'RU': 'な',
+    'RF': 'ね',
+    'RB': 'に',
+    'RD': 'ぬ',
+    'BU': 'つ',
+    'BL': 'て',
+    'BR': 'ち',
+    'BD': 'た',
+    'DB': 'ふ',
+    'DL': 'へ',
+    'DR': 'ひ',
+    'DF': 'は',
+}
+"""
 
 """
 GUI Settings

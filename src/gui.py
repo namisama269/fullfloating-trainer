@@ -15,9 +15,9 @@ HEIGHT = 720
 pygame.init()
 
 # Enter the display font (recommended to not change)
-#font = pygame.font.SysFont('arialbold', 16)
+fontbig = pygame.font.Font('cyberbit.ttf', 40)
 font = pygame.font.Font('freesansbold.ttf', 16)
-fontbig = pygame.font.Font('freesansbold.ttf', 40)
+#fontbig = pygame.font.Font('freesansbold.ttf', 40)
 fontmed = pygame.font.Font('freesansbold.ttf', 24)
 fontsmall = pygame.font.Font('freesansbold.ttf', 16)
 
