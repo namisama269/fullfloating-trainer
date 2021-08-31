@@ -15,9 +15,9 @@ HEIGHT = 720
 pygame.init()
 
 # Enter the display font (recommended to not change)
-fontbig = pygame.font.Font('cyberbit.ttf', 40)
+#fontbig = pygame.font.Font('cyberbit.ttf', 40)
 font = pygame.font.Font('freesansbold.ttf', 16)
-#fontbig = pygame.font.Font('freesansbold.ttf', 40)
+fontbig = pygame.font.Font('freesansbold.ttf', 40)
 fontmed = pygame.font.Font('freesansbold.ttf', 24)
 fontsmall = pygame.font.Font('freesansbold.ttf', 16)
 
@@ -33,8 +33,8 @@ class Gui:
         self.virtualcube.fill(bg_colour)
         self.curr_alg = ""
         self.curr_cycle = {
-            'buffer': None,
-            'targets': [None, None],
+            'buffer': "",
+            'targets': ["", ""],
         }
         self.bld_mode = False
         self.show_cube = True
@@ -121,6 +121,8 @@ class Gui:
                         stk_colour = buffer_clr
                     elif self.cube.faces["DLRBFU"[i]][x][y][0] == self.curr_cycle['targets'][1]:
                         stk_colour = target_clr1
+                    elif len(self.cube.faces["DLRBFU"[i]][x][y][0]) == len(self.curr_cycle['buffer']):
+                        stk_colour = highlight_clr
                     else:
                         stk_colour = fill_clr
                 else:

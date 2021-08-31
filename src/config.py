@@ -24,26 +24,24 @@ train_pcs = ['e']
 # Buffers to train, comment out to not train 
 buffers = {
     'c': [
-        """
-        'UFR', 
+        #'UFR', 
         'UFL', 
         'UBL', 
         'UBR', 
         'DFR', 
-        'DBR',
-        """
+        #'DBR',
         ],
     'e': [
         #'UF', 
         'UB', 
-        'UR', 
-        'UL', 
-        'DF', 
-        'DB', 
-        'FR', 
-        'FL', 
-        'DR', 
-        'DL',
+        #'UR', 
+        #'UL', 
+        #'DF', 
+        #'DB', 
+        #'FR', 
+        #'FL', 
+        #'DR', 
+        #'DL',
         ],
 }
 
@@ -74,7 +72,7 @@ letter_scheme = {
     'DBL': 'U',
     'DBR': 'V',
     'DFL': 'W',
-    'DFR': 'Z',
+    'DFR': 'X',
 
     # edges
     'UB': 'A',
@@ -171,19 +169,20 @@ bg_colour = (238,255,204)#(209,209,246)
 
 # Face colours
 face_colours = {
-    'W': (255, 255, 255),
-    'Y': (240, 255, 0),
-    'B': (32, 85, 255),
-    'G': (102, 255, 51),
-    'R': (232, 18 ,10),
-    'O': (251, 140, 0),
+    'W': (255,255,255),
+    'Y': (240,255,0),
+    'B': (32,85,255),
+    'G': (102,255,51),
+    'R': (232,18,10),
+    'O': (251,140,0),
 }
 
 # BLD mode colours
-buffer_clr = (0,0,0)
-target_clr1 = (255,0,0)
-target_clr2 = (0,0,255)
-fill_clr = (255,255,255)
+buffer_clr = (255,0,0)
+target_clr1 = (204,153,255)
+target_clr2 = (153,51,255)
+highlight_clr = (245,245,245)
+fill_clr = (224,224,224)
 
 # Button colours
 button_clr = (255,187,187)#(190,190,190)
