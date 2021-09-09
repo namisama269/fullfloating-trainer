@@ -100,6 +100,7 @@ class Gui:
     def draw_cube(self):
         self.virtualcube.fill(bg_colour)
         if not self.show_cube:
+            self.screen.blit(self.virtualcube, (35,120))
             return
         # Coordinates of all facelet points
         for i, face in enumerate(facelets[self.cube.size]):
@@ -123,7 +124,7 @@ class Gui:
                 pygame.gfxdraw.aapolygon(self.virtualcube, points, (0,0,0))
         
         self.screen.blit(self.virtualcube, (35,120))
-
+    
     def draw_buttons(self, buttons):
         for button in buttons:
             button.draw(self.screen)
@@ -141,7 +142,6 @@ class Gui:
 
     def display_targets(self):
         pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0)  
-        pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
         if not self.show_targets:
             return
         text = fontbig.render(self.out_txt, True, (0,0,0))
