@@ -58,7 +58,6 @@ def inverse_move(move):
     base = move[:idx]
     offset = move[idx:]
     return base + move_offsets[2-move_offsets.index(offset)]
-    
 
 def cancel_moves(move1, move2):
     idx1 = get_move_split_idx(move1)
@@ -78,6 +77,18 @@ def cancel_moves(move1, move2):
     else:
         return (True, base1 + move_offsets[net_offset-1])
 
+def cancel_str(move_list):
+    out_list = [move_list[0]]
+
+    for i in range(1, len(move_list)):
+        pop_prev, add_next = cancel_moves(move_list[i-1], move_list[i])
+        if pop_prev:
+            if len(out_list) > 0:
+                out_list.pop()
+        if add_next is not None:
+            out_list.append(add_next)
+
+    return out_list
 
 def inverse_moves(move_str):
     move_str = move_str.split()
@@ -86,6 +97,9 @@ def inverse_moves(move_str):
 def comm_to_moves(comm):
     if not is_commutator(comm):
         return comm
+
+    # replace apostrophe
+    comm = comm.replace("’", "'")
 
     comm = comm.replace('[', '').replace(']', '')
     comm = comm.replace('(', '').replace(')', '')
@@ -114,21 +128,15 @@ def comm_to_moves(comm):
     # change 2' to 2 
     move_str = move_str.replace("2'", "2")
     move_list = move_str.split()
-    out_list = [move_list[0]]
 
-
-    for i in range(1, len(move_list)):
-        pop_prev, add_next = cancel_moves(move_list[i-1], move_list[i])
-        if pop_prev:
-            if len(out_list) > 0:
-                out_list.pop()
-        if add_next is not None:
-            out_list.append(add_next)
+    out_list = cancel_str(move_list)
+    for _ in range(len(out_list)):
+        out_list = cancel_str(out_list)
 
     return ' '.join(out_list)
 
 
 if __name__ == "__main__":
     comm = input()
-    #print(comm_to_moves(comm))
-    print(inverse_moves(comm))
+    print(comm_to_moves(comm))
+    #print(inverse_moves(comm))

@@ -9,7 +9,7 @@ orientation = "YBRGOW"
 pieces = {
     'c': [
         ['UFR','RUF','FUR'], ['UFL','FUL','LUF'], ['UBL','LUB','BUL'], ['UBR','BUR','RUB'],
-        ['DFR','FDR','RDF'], ['DBR','RDB','BDR'], ['DBL','BDL','LDB'], ['DFL','LDF','FDL'], 
+        ['DFR','FDR','RDF'], ['DFL','LDF','FDL'], ['DBR','RDB','BDR'], ['DBL','BDL','LDB'],
     ],
     'e': [
         ['UF','FU'], ['UB','BU'], ['UR','RU'], ['UL','LU'], 
@@ -19,23 +19,23 @@ pieces = {
 }
 
 # Piece types to train
-train_pcs = ['e']
+pce_types = ['e','c']
 
 # Buffers to train, comment out to not train 
 buffers = {
     'c': [
         #'UFR', 
         'UFL', 
-        'UBL', 
-        'UBR', 
-        'DFR', 
-        #'DBR',
+        #'UBL', 
+        #'UBR', 
+        #'DFR', 
+        #'DFL',
         ],
     'e': [
         #'UF', 
         'UB', 
-        #'UR', 
-        #'UL', 
+        'UR', 
+        'UL', 
         #'DF', 
         #'DB', 
         #'FR', 
@@ -165,7 +165,7 @@ GUI Settings
 # Enter the following colours in (R, G, B) format. 
 
 # Background colour
-bg_colour = (238,255,204)#(209,209,246)
+bg_colour = (255,250,205)#(238,255,204)
 
 # Face colours
 face_colours = {

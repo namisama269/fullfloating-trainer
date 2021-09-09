@@ -1,6 +1,6 @@
 import random
 
-from config import pieces, letter_scheme, buffers, train_pcs
+from config import pieces, letter_scheme, buffers, pce_types
 
 def get_buffer_index(piece_type, buffer):
     for i, piece in enumerate(pieces[piece_type]):
@@ -28,6 +28,6 @@ def gen_letter_pair(piece_type):
 
 if __name__ == "__main__":
     for i in range(20):
-        piece_type = random.choice(train_pcs)
+        piece_type = random.choice(pce_types)
         out = gen_letter_pair(piece_type)
         print(f"{out['buffer']} {out['targets'][0]} {out['targets'][1]}")
