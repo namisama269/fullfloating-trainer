@@ -140,7 +140,8 @@ class Gui:
         self.out_txt = out_txt
 
     def display_targets(self):
-        pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0)  
+        pygame.draw.rect(self.screen, bg_colour, (0, 0, 500, 150), 0) 
+        pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)  
         if not self.show_targets:
             return
         text = fontbig.render(self.out_txt, True, (0,0,0))
