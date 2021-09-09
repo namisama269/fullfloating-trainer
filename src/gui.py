@@ -75,7 +75,6 @@ class Gui:
                     if event.key == pygame.K_ESCAPE:
                         self.reset_cube()
                     if event.key == pygame.K_SPACE:
-                        self.clear_alg()
                         self.display_alg()
                     if event.key == pygame.K_TAB:
                         self.pce_idx += 1
@@ -149,6 +148,7 @@ class Gui:
         self.screen.blit(text, text_rect)
 
     def display_alg(self):
+        pygame.draw.rect(self.screen, bg_colour, (0, 500, 540, 150), 0)   
         out_txt = self.curr_alg
         text = fontmed.render(out_txt, True, (0,0,0))
         text_rect = text.get_rect(center=(WIDTH/2, 580))
